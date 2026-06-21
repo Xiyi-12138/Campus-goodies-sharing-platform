@@ -23,6 +23,7 @@
         <el-table-column prop="requirement" label="交换条件" show-overflow-tooltip></el-table-column>
         <el-table-column prop="userName" label="上传人" v-if="data.user.role === '管理员'"></el-table-column>
         <el-table-column prop="time" label="上传时间"></el-table-column>
+        <el-table-column prop="collectCount" label="收藏数"></el-table-column>
         <el-table-column prop="checkStatus" label="审核状态">
           <template v-slot="scope">
             <el-tag type="warning" v-if="scope.row.checkStatus === '待审核'">待审核</el-tag>

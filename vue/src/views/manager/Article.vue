@@ -26,6 +26,8 @@
         </el-table-column>
         <el-table-column prop="time" label="发布时间"></el-table-column>
         <el-table-column prop="userName" label="发布人"></el-table-column>
+        <el-table-column prop="likeCount" label="点赞数"></el-table-column>
+        <el-table-column prop="commentCount" label="评论数"></el-table-column>
         <el-table-column prop="status" label="审核状态">
           <template #default="scope">
             <span style="color: orange" v-if="scope.row.status === '待审核'">待审核</span>

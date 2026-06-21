@@ -5,7 +5,11 @@
 <mapper namespace="com.example.mapper.ItemsMapper">
 
     <select id="selectAll" resultType="com.example.entity.Items">
-        select items.*, user.name as userName, category.name as categoryName from `items`
+        select items.*,
+               user.name as userName,
+               category.name as categoryName,
+               (select count(*) from `collect` where collect.item_id = items.id) as collectCount
+        from `items`
         left join user on items.user_id = user.id
         left join category on items.category_id = category.id
         <where>

@@ -31,6 +31,7 @@
                   <div><span style="margin-right: 5px">👤</span>{{item.userName}}</div>
                   <div>{{ item.time }}</div>
                 </div>
+                <div style="font-size: 13px; color: #999; margin-bottom: 12px">收藏数：{{ item.collectCount || 0 }}</div>
                 <div style="text-align: center">
                   <el-button @click="handleCharge(item)" type="primary" style="width: 100%; border-radius: 20px" :disabled="item.userId === data.user.id">申请交换</el-button>
                 </div>

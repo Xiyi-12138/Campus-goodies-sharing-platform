@@ -30,8 +30,10 @@ public interface ArticleMapper {
     /**
       * 根据ID查询
     */
-    @Select("select article.*, user.name as userName from `article` " +
-            "        left join user on article.user_id = user.id where article.id = #{id}")
+    @Select("select article.*, user.name as userName, " +
+            "(select count(*) from `likes` where likes.article_id = article.id) as likeCount, " +
+            "(select count(*) from `comments` where comments.article_id = article.id) as commentCount " +
+            "from `article` left join user on article.user_id = user.id where article.id = #{id}")
     Article selectById(Integer id);
 
     /**

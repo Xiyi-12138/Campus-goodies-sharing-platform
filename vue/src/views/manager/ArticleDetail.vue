@@ -8,6 +8,10 @@
       </div>
       <div style="font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 15px">{{ data.article.title }}</div>
       <div style="font-size: 14px; color: #666; text-align: center; margin-bottom: 30px">发布人：{{ data.article.userName }}   <span style="margin-left: 20px">发布时间：{{ data.article.time }}</span></div>
+      <div style="font-size: 14px; color: #666; text-align: center; margin-bottom: 25px">
+        点赞数：{{ data.likeCount }}
+        <span style="margin-left: 20px">评论数：{{ data.total }}</span>
+      </div>
       <div v-html="data.article.content"></div>
     </div>
 
@@ -53,12 +57,14 @@ const data = reactive({
   pageNum: 1,
   pageSize: 10,
   total: 0,
+  likeCount: 0,
   content: null,
   commentList: []
 })
 
 request.get('/article/selectById/' + data.id).then(res => {
   data.article = res.data
+  data.likeCount = res.data?.likeCount || 0
 })
 
 const loadLikes = () => {
@@ -73,11 +79,33 @@ const loadLikes = () => {
 }
 loadLikes()
 
+const loadLikeCount = () => {
+  request.get('/likes/selectAll', {
+    params: {
+      articleId: data.id
+    }
+  }).then(res => {
+    data.likeCount = res.data?.length || 0
+  })
+}
+loadLikeCount()
 
 const addLike = () => {
   request.post('/likes/add', { userId : data.user.id, articleId: data.id }).then(res => {
     ElMessage.success('操作成功')
     loadLikes()
+    loadLikeCount()
+  })
+}
+
+const removeLike = () => {
+  if (!data.likes?.id) {
+    return
+  }
+  request.delete('/likes/delete/' + data.likes.id).then(res => {
+    ElMessage.success('操作成功')
+    loadLikes()
+    loadLikeCount()
   })
 }
 

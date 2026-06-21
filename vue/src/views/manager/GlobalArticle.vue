@@ -16,6 +16,10 @@
               <div style="font-size: 14px; color: #666">发布人：{{ item.userName }}
                 <span style="margin-left: 20px">发布时间：{{ item.time }}</span>
               </div>
+              <div style="font-size: 13px; color: #999; margin-top: 8px">
+                点赞数：{{ item.likeCount || 0 }}
+                <span style="margin-left: 20px">评论数：{{ item.commentCount || 0 }}</span>
+              </div>
             </div>
           </div>
         </el-col>

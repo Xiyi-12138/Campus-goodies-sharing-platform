@@ -29,6 +29,7 @@ public class Items {
     private String categoryName;
 
     private Integer collectId;
+    private Integer collectCount;
 
 
     public Integer getCollectId() {
@@ -37,6 +38,14 @@ public class Items {
 
     public void setCollectId(Integer collectId) {
         this.collectId = collectId;
+    }
+
+    public Integer getCollectCount() {
+        return collectCount;
+    }
+
+    public void setCollectCount(Integer collectCount) {
+        this.collectCount = collectCount;
     }
 
     public String getCategoryName() {

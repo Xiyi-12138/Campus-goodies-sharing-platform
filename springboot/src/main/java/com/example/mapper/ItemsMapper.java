@@ -30,7 +30,9 @@ public interface ItemsMapper {
     /**
       * 根据ID查询
     */
-    @Select("select * from `items` where id = #{id}")
+    @Select("select items.*, " +
+            "(select count(*) from `collect` where collect.item_id = items.id) as collectCount " +
+            "from `items` where items.id = #{id}")
     Items selectById(Integer id);
 
     /**

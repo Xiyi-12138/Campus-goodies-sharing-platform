@@ -5,7 +5,11 @@
 <mapper namespace="com.example.mapper.ArticleMapper">
 
     <select id="selectAll" resultType="com.example.entity.Article">
-        select article.*, user.name as userName from `article`
+        select article.*,
+               user.name as userName,
+               (select count(*) from `likes` where likes.article_id = article.id) as likeCount,
+               (select count(*) from `comments` where comments.article_id = article.id) as commentCount
+        from `article`
         left join user on article.user_id = user.id
         <where>
             <if test="title != null"> and article.title like concat('%', #{title}, '%')</if>

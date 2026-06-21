@@ -21,6 +21,8 @@ public class Article {
     private String status;
     /**审核理由 */
     private String reason;
+    private Integer likeCount;
+    private Integer commentCount;
 
     public Integer getId() {
         return id;
@@ -100,5 +102,21 @@ public class Article {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
     }
 }
