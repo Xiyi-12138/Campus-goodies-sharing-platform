@@ -1,2 +1,9 @@
 /picture/
 /files/
+springboot/backend-live.err.log
+springboot/backend-live.log
+springboot/backend.err.log
+springboot/backend.log
+springboot/target/springboot-0.0.1-SNAPSHOT.jar
+springboot/target/springboot-0.0.1-SNAPSHOT.jar.original
+springboot/target/maven-archiver/pom.properties
